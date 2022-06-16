@@ -1,4 +1,4 @@
-const fetch = (...args) => import('node-fetch').then(({ default: nodeFetch }) => nodeFetch(...args));
+const fetch = require('../../utils/fetch');
 
 const baseurl = process.env.BASE_URL || 'http://localhost:8080';
 
