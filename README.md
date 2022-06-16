@@ -1,2 +1,1 @@
 # datadog-nodejs-demo
-DataDog
