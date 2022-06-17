@@ -9,6 +9,7 @@ app.get('/health', () => ({ isHealth: 200 }));
 
 app.get('/throwError', async (req) => {
     const { timeout = -1 } = req.query;
+    console.log(`url: '/throwError', query: ${JSON.stringify(req.query)}`);
 
     try {
         const testing = parseInt(timeout, 10);
@@ -23,6 +24,8 @@ app.get('/throwError', async (req) => {
 
 app.get('/waitRequest', async (req) => {
     let { timeout = -1 } = req.query;
+    console.log(`url: '/waitRequest', query: ${JSON.stringify(req.query)}`);
+
     timeout = parseInt(timeout, 10);
     if (timeout > 0) await sleep(timeout);
 

@@ -4,8 +4,7 @@ const baseurl = process.env.BASE_URL || 'http://localhost:8080';
 
 const singleCall = async (timeWait) => {
     try {
-        const response = await fetch(`${baseurl}/waitRequest?timeout=${timeWait}`).then((r) => r.json());
-        // console.log(response);
+        const response = await fetch(`${baseurl}/waitRequest?timeout=${timeWait}&startTime=${Date.now()}`).then((r) => r.json());
         return response;
     } catch (error) {
         console.log(JSON.stringify({
