@@ -9,6 +9,7 @@ if (enableDataDog === 'true') {
         profiling: true,
         env: 'prod',
         service: 'api',
+        runtimeMetrics: true,
         version,
     });
     tracer.use('http', {
