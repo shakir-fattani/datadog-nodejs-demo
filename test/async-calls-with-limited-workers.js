@@ -7,7 +7,7 @@ const loadTesting = async (countOf, workerCount) => {
         let valu = request.shift();
         while (valu !== undefined) {
             // eslint-disable-next-line no-await-in-loop
-            await singleCall(valu);
+            await singleCall(valu % 10);
             valu = request.shift();
         }
     };

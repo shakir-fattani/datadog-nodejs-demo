@@ -1,3 +1,4 @@
+/* eslint-disable no-await-in-loop */
 const SyncCalls = require('./sync-calls');
 const AsyncCalls = require('./async-calls');
 const AsyncCallsWithLimitedWorker = require('./async-calls-with-limited-workers');
@@ -17,16 +18,19 @@ const start = async () => {
     console.log('starting load');
 
     console.time('sync-calls-to-api');
-    await SyncCalls(countOf);
+    await SyncCalls(countOf / 10);
     console.timeEnd('sync-calls-to-api');
 
-    console.time('async-calls-to-api');
-    await AsyncCalls(countOf);
-    console.timeEnd('async-calls-to-api');
+    let i;
+    for (i = 0; i < 100; i += 1) {
+        console.time('async-calls-to-api');
+        await AsyncCalls(countOf);
+        console.timeEnd('async-calls-to-api');
 
-    console.time('async-calls-to-api-with-limited-workers-thread');
-    await AsyncCallsWithLimitedWorker(countOf, workerCount);
-    console.timeEnd('async-calls-to-api-with-limited-workers-thread');
+        console.time('async-calls-to-api-with-limited-workers-thread');
+        await AsyncCallsWithLimitedWorker(countOf, workerCount);
+        console.timeEnd('async-calls-to-api-with-limited-workers-thread');
+    }
 };
 
 start().catch(console.error);

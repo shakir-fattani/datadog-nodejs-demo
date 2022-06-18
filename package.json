@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/shakir-fattani/datadog-nodejs-demo#readme",
   "dependencies": {
+    "connect-datadog": "^0.0.9",
     "dd-trace": "^2.9.1",
     "faster-api-deploy": "^1.0.42",
     "node-fetch": "^3.2.6"
